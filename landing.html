@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DreamsHelix Python Course</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    body, html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+      background-color: #f4f7fa;
+      color: #333;
+    }
+    header {
+      background: linear-gradient(135deg, #663399, #ff6f61);
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+      background-attachment: fixed;
+      animation: fadeInHeader 2s ease-in-out;
+    }
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+    header p {
+      font-size: 1.2rem;
+    }
+    .cta {
+      background: #ffcd3c;
+      padding: 30px 20px;
+      text-align: center;
+      animation: pulse 1.5s infinite alternate;
+    }
+    .cta button {
+      background: #222;
+      color: #fff;
+      padding: 14px 28px;
+      border: none;
+      font-size: 1.1rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    section {
+      padding: 60px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .features, .testimonials, .faq, .about, .lead-form {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.06);
+      transition: transform 0.3s ease;
+    }
+    .features:hover, .testimonials:hover, .faq:hover, .about:hover, .lead-form:hover {
+      transform: translateY(-5px);
+    }
+    h2 {
+      color: #ff6f61;
+      margin-bottom: 15px;
+    }
+    .testimonial {
+      background: #f0f0f0;
+      margin: 10px 0;
+      padding: 15px;
+      border-left: 4px solid #663399;
+    }
+    .countdown {
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #d32f2f;
+      margin: 10px 0;
+    }
+    .lead-form input, .lead-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .lead-form button {
+      background-color: #ff6f61;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    footer {
+      background: #222;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding: 20px;
+    }
+    .footer-left, .footer-right {
+      flex: 1;
+      min-width: 250px;
+    }
+    @keyframes fadeInHeader {
+      from {opacity: 0; transform: translateY(-30px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.03); }
+    }
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      .cta button {
+        width: 100%;
+        padding: 12px;
+      }
+      footer {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Master Python with DreamsHelix</h1>
+    <p>India’s First Learn & Earn Platform for Python Enthusiasts</p>
+  </header>
+
+  <div class="cta">
+    <p><strong>Limited Offer:</strong> Enroll for just ₹6,999 + GST</p>
+    <div class="countdown" id="countdown"></div>
+    <button onclick="scrollToEnroll()">Enroll Now</button>
+  </div>
+
+  <section class="features">
+    <h2>What You’ll Learn</h2>
+    <ul>
+      <li>Python – Beginner to Advanced</li>
+      <li>Real-time Projects & Internship</li>
+      <li>Auto Certificate after Final Exam</li>
+      <li>Resume Building & Job Training</li>
+      <li>Earn with Referrals – Start Instantly</li>
+    </ul>
+  </section>
+
+  <section class="about">
+    <h2>About DreamsHelix</h2>
+    <p>DreamsHelix EdTech Private Limited is an MCA-registered startup recognized under Startup India. Our mission is to revolutionize education by offering skill-based, job-ready training with real-time projects and certification. We’re India’s first Learn & Earn platform providing Python training from basic to advanced levels along with an affiliate program to promote financial independence.</p>
+    <p><strong>Founder & CEO:</strong> Bineet Kumar Sahu, a visionary entrepreneur on a mission to bridge the gap between education and employment through tech-driven solutions.</p>
+    <p><strong>Director:</strong> Aditya Pratap Sahu, driving innovation, operations, and learner engagement at DreamsHelix.</p>
+  </section>
+
+  <section class="testimonials">
+    <h2>Student Testimonials</h2>
+    <div class="testimonial">“Best Python course! Landed an internship in just 2 months.” – Ritika Sharma</div>
+    <div class="testimonial">“Real projects + friendly mentors = game-changer!” – Amit Ranjan</div>
+  </section>
+
+  <section class="faq">
+    <h2>FAQs</h2>
+    <p><strong>Q:</strong> Is there a certificate?<br><strong>A:</strong> Yes, auto-generated after the final exam.</p>
+    <p><strong>Q:</strong> Can I earn while learning?<br><strong>A:</strong> Yes, with our unique referral program.</p>
+    <p><strong>Q:</strong> Is this course beginner-friendly?<br><strong>A:</strong> 100%, even if you’ve never coded before.</p>
+  </section>
+
+  <section class="lead-form">
+    <h2>Request a Free Consultation</h2>
+    <form>
+      <input type="text" placeholder="Full Name" required>
+      <input type="email" placeholder="Email Address" required>
+      <input type="tel" placeholder="Phone Number" required>
+      <textarea placeholder="Your Message"></textarea>
+      <button type="submit">Submit</button>
+    </form>
+  </section>
+
+  <div class="cta" id="enroll">
+    <p><strong>Take Control of Your Career</strong></p>
+    <button>Enroll Now – ₹6,999 + GST</button>
+  </div>
+
+  <footer>
+    <div class="footer-left">
+      <p>© 2025 DreamsHelix EdTech Pvt Ltd. All rights reserved.</p>
+    </div>
+    <div class="footer-right">
+      <p><strong>Address:</strong> Flat No - 02, At/Po - Kangaon, Sohela, Bargarh, Odisha, India – 768033</p>
+    </div>
+  </footer>
+
+  <script>
+    function scrollToEnroll() {
+      document.getElementById("enroll").scrollIntoView({ behavior: "smooth" });
+    }
+
+    // Countdown Timer
+    const countdownEl = document.getElementById("countdown");
+    const offerEnd = new Date();
+    offerEnd.setHours(offerEnd.getHours() + 24);
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = offerEnd - now;
+
+      if (distance < 0) {
+        countdownEl.innerHTML = "Offer expired!";
+        return;
+      }
+
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      countdownEl.innerHTML = Offer ends in ${hours}h ${minutes}m ${seconds}s;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
+</body>
+</html>
