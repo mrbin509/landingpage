@@ -87,7 +87,12 @@
       padding: 20px;
     }
 
-    /* Brand Section */
+    .new-section {
+      background: #f1f5f9;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
     .brand-section {
       background: #e2e8f0;
       padding: 50px 20px;
@@ -102,8 +107,6 @@
 
     .brand-container {
       display: flex;
-      align-items: center;
-      justify-content: center;
       gap: 20px;
       animation: scrollLeft 20s linear infinite;
       width: max-content;
@@ -130,7 +133,6 @@
       100% { transform: translateX(-50%); }
     }
 
-    /* Testimonials Section */
     .testimonial-section {
       background: #fff;
       padding: 50px 20px;
@@ -141,10 +143,6 @@
       font-size: 28px;
       margin-bottom: 30px;
       color: #1e293b;
-    }
-
-    .testimonial-wrapper {
-      overflow: hidden;
     }
 
     .testimonial-track {
@@ -176,14 +174,21 @@
       font-size: 14px;
     }
 
-    .new-section {
-      background: #f1f5f9;
-      padding: 40px 20px;
+    .team-card {
       text-align: center;
+      width: 180px;
     }
 
-    .new-section h2 {
-      color: #1e293b;
+    .team-card img {
+      border-radius: 12px;
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .team-card p {
+      margin-top: 10px;
+      font-weight: bold;
     }
   </style>
 </head>
@@ -206,28 +211,17 @@
 </div>
 
 <div class="section">
-  <h2>Popular Courses</h2>
+  <h2>Popular Course</h2>
   <div class="card">
-    <h3>Web Development</h3>
-    <p>HTML, CSS, JavaScript and React</p>
-    <button>Enroll Now</button>
-    <div class="price">Price: ₹4999</div>
-  </div>
-  <div class="card">
-    <h3>Data Science</h3>
-    <p>Python, ML, AI, and more</p>
-    <button>Enroll Now</button>
-    <div class="price">Price: ₹3999</div>
-  </div>
-  <div class="card">
-    <h3>Digital Marketing</h3>
-    <p>SEO, SEM, Social Media</p>
-    <button>Enroll Now</button>
-    <div class="price">Price: ₹6999</div>
+    <h3>Python</h3>
+    <p>Python Basics to Advanced, Django, Flask, API...</p>
+    <button onclick="enrollForm()">Enroll Now</button>
+    <div class="Price">
+    <span class="Original Price">₹4,999</span>
+    <span class="Discounted Price">FREE</span>
   </div>
 </div>
 
-<!-- New Section Below Courses -->
 <div class="new-section">
   <h2>Why Choose DreamsHelix?</h2>
   <p>Real-world projects, industry mentors, and job-ready training at your fingertips.</p>
@@ -262,28 +256,34 @@
   </div>
 </div>
 
-<!-- Testimonials Section -->
+<!-- Testimonials -->
 <div class="testimonial-section">
   <h2>A Testimony to What We Do</h2>
-  <div class="testimonial-wrapper">
-    <div class="testimonial-track" id="testimonialTrack">
-      <!-- Testimonials go here (same as previous) -->
-	<div class="testimonial-card"><h4>Aryan Sinha</h4><div class="stars">★★★★</div><p class="passion">Cybersecurity enthusiast.</p></div>
-      <div class="testimonial-card"><h4>Pooja Mehta</h4><div class="stars">★★★★★</div><p class="passion">Digital marketing strategist.</p></div>
-      <div class="testimonial-card"><h4>Rohit Verma</h4><div class="stars">★★★</div><p class="passion">Blockchain innovator.</p></div>
-      <div class="testimonial-card"><h4>Sneha Gupta</h4><div class="stars">★★★★★</div><p class="passion">IoT for smart cities.</p></div>
-      <div class="testimonial-card"><h4>Neeraj Bansal</h4><div class="stars">★★★★</div><p class="passion">UI animation lover.</p></div>
-      <div class="testimonial-card"><h4>Megha Rao</h4><div class="stars">★★★★★</div><p class="passion">AI app builder.</p></div>
-      <div class="testimonial-card"><h4>Kunal Yadav</h4><div class="stars">★★★★</div><p class="passion">Secure systems designer.</p></div>
-      <div class="testimonial-card"><h4>Riya Kapoor</h4><div class="stars">★★★★★</div><p class="passion">Future edtech founder.</p></div>
-      <div class="testimonial-card"><h4>Alok Sen</h4><div class="stars">★★★</div><p class="passion">Python educator.</p></div>
-      <div class="testimonial-card"><h4>Shraddha Jain</h4><div class="stars">★★★★★</div><p class="passion">Green tech warrior.</p></div>
-      <div class="testimonial-card"><h4>Yash Sharma</h4><div class="stars">★★★★</div><p class="passion">Student app creator.</p></div>
-      <div class="testimonial-card"><h4>Sanya Desai</h4><div class="stars">★★★★★</div><p class="passion">Agro robotics.</p></div>
-      <div class="testimonial-card"><h4>Manish Dubey</h4><div class="stars">★★★★★</div><p class="passion">Product manager.</p></div>
-      <div class="testimonial-card"><h4>Priya Rathi</h4><div class="stars">★★★★★</div><p class="passion">Health-tech startup founder.</p></div>
-      <div class="testimonial-card"><h4>Harsh Raj</h4><div class="stars">★★★★★</div><p class="passion">Full-stack developer.</p></div>
+  <div class="testimonial-track">
+    <div class="testimonial-card"><h4>Aryan Sinha</h4><div class="stars">★★★★</div><p class="passion">Cybersecurity enthusiast.</p></div>
+    <div class="testimonial-card"><h4>Pooja Mehta</h4><div class="stars">★★★★★</div><p class="passion">Digital marketing strategist.</p></div>
+    <div class="testimonial-card"><h4>Riya Kapoor</h4><div class="stars">★★★★★</div><p class="passion">Future edtech founder.</p></div>
+  </div>
+</div>
 
+<!-- Team Section -->
+<div style="background: #f9fafb; padding: 40px 20px; text-align: center;">
+  <h2 style="color: #1e293b; margin-bottom: 30px;">Meet Our Team</h2>
+  <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
+    <div class="team-card">
+      <img src="COO.jpg" alt="Bikiraj Bhuyan">
+      <p>COO - Mr. Bikiraj Bhuyan</p>
+      <span>"Your journey to financial freedom starts with skills."</span>
+    </div>
+    <div class="team-card">
+      <img src="Founder.jpg" alt="Bineet Kumar Sahu">
+      <p>CEO - Er. Bineet Kumar Sahu</p>
+      <span>"Every line of code you write today builds your future tomorrow."<span>    
+    </div>
+    <div class="team-card">
+      <img src="Director.jpg" alt="Aditya Pratap Sahu">
+      <p>Director - Mr. Aditya Pratap Sahu</p>
+      <span>"Consistency in learning is the foundation of success."</span>
     </div>
   </div>
 </div>
@@ -296,13 +296,24 @@
 </footer>
 
 <script>
-  // Apply random background color to testimonial cards
   const colors = ['#ef4444', '#3b82f6', '#10b981', '#f59e0b', '#6366f1', '#14b8a6', '#e11d48', '#8b5cf6', '#0ea5e9'];
   const cards = document.querySelectorAll('.testimonial-card');
   cards.forEach(card => {
     const randomColor = colors[Math.floor(Math.random() * colors.length)];
     card.style.backgroundColor = randomColor;
   });
+
+  function enrollForm() {
+    const name = prompt("Enter your full name:");
+    const mobile = prompt("Enter your mobile number:");
+    const gmail = prompt("Enter your Gmail address:");
+
+    if (name && mobile && gmail) {
+      alert("Thanks for enrolling, " + name + "!\nWe will contact you at " + gmail + " soon.");
+    } else {
+      alert("Enrollment failed. Please fill all details.");
+    }
+  }
 </script>
 
 </body>
