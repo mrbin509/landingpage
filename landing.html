@@ -360,6 +360,138 @@
   </div>
 </div>
 
+<!-- ✅ FAQ Section Start -->
+<section class="faq-section">
+  <h2 class="faq-title">Frequently Asked Questions</h2>
+  <div class="faq-container">
+
+    <div class="faq-card">
+      <div class="faq-question" onclick="toggleFAQ(this)">
+        What is DreamsHelix and how does it work?
+        <span class="arrow">+</span>
+      </div>
+      <div class="faq-answer">
+        DreamsHelix is an innovative EdTech platform offering Python & Web Development courses with certifications, mentorship, and earning opportunities for students.
+      </div>
+    </div>
+
+    <div class="faq-card">
+      <div class="faq-question" onclick="toggleFAQ(this)">
+        Will I receive a certificate after completing the course?
+        <span class="arrow">+</span>
+      </div>
+      <div class="faq-answer">
+        Yes! You’ll get an industry-recognized certificate after successfully completing the course and final exam.
+      </div>
+    </div>
+
+    <div class="faq-card">
+      <div class="faq-question" onclick="toggleFAQ(this)">
+        Are there any internship or job opportunities after the course?
+        <span class="arrow">+</span>
+      </div>
+      <div class="faq-answer">
+        Absolutely. We provide internship support, real projects, and referral opportunities to help you grow your career.
+      </div>
+    </div>
+
+    <div class="faq-card">
+      <div class="faq-question" onclick="toggleFAQ(this)">
+        How do I enroll and make payment?
+        <span class="arrow">+</span>
+      </div>
+      <div class="faq-answer">
+        Just click on the "Enroll Now" button and follow the payment steps. Our support team is always here to help.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+.faq-section {
+  background: linear-gradient(to right, #e0f7fa, #ffffff);
+  padding: 60px 20px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.faq-title {
+  text-align: center;
+  font-size: 2.5em;
+  color: #004d40;
+  margin-bottom: 40px;
+  font-weight: 700;
+}
+
+.faq-container {
+  max-width: 900px;
+  margin: auto;
+}
+
+.faq-card {
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+  transition: all 0.3s ease-in-out;
+}
+
+.faq-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+}
+
+.faq-question {
+  padding: 20px;
+  cursor: pointer;
+  position: relative;
+  font-size: 1.2em;
+  font-weight: 600;
+  color: #00796b;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.arrow {
+  font-size: 1.5em;
+  transition: transform 0.3s ease;
+}
+
+.faq-answer {
+  padding: 0 20px 20px 20px;
+  display: none;
+  font-size: 1em;
+  color: #444;
+  line-height: 1.6;
+}
+
+.faq-question.active .arrow {
+  transform: rotate(45deg);
+  color: #d32f2f;
+}
+</style>
+
+<script>
+function toggleFAQ(element) {
+  const answer = element.nextElementSibling;
+  const allAnswers = document.querySelectorAll('.faq-answer');
+  const allQuestions = document.querySelectorAll('.faq-question');
+
+  allAnswers.forEach(a => a.style.display = 'none');
+  allQuestions.forEach(q => q.classList.remove('active'));
+
+  if (answer.style.display === 'block') {
+    answer.style.display = 'none';
+    element.classList.remove('active');
+  } else {
+    answer.style.display = 'block';
+    element.classList.add('active');
+  }
+}
+</script>
+<!-- ✅ FAQ Section End -->
+
 <!-- Testimonials -->
 <div class="testimonial-section">
   <h2>A Testimony to What We Do</h2>
