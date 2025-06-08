@@ -333,18 +333,18 @@
     }
   }
 </script>
-
-<!-- Rotating Fixed DreamsHelix Logo -->
+        
+<!-- Fixed DreamsHelix Logo with Motion Effect (Top-Right) -->
 <div style="
   position: fixed;
-  bottom: 20px;
+  top: 20px;
   right: 20px;
   z-index: 9999;
-  animation: rotateLogo 8s linear infinite;
-  transition: transform 0.3s ease-in-out;
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   cursor: pointer;
+  transition: transform 0.4s ease, box-shadow 0.3s ease;
+  animation: subtleBounce 4s ease-in-out infinite;
 ">
   <img src="DreamsHelix.jpg" alt="DreamsHelix Logo" style="
     width: 100%;
@@ -355,11 +355,15 @@
   ">
 </div>
 
-<!-- Keyframe animation for rotation -->
+<!-- Keyframe Animation -->
 <style>
-  @keyframes rotateLogo {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+  @keyframes subtleBounce {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-6px);
+    }
   }
 </style>
 
