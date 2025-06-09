@@ -828,26 +828,139 @@ function submitLeadForm(event) {
 <!-- ✅ Why Trust Us Section End -->
 
 <!-- Team Section -->
-<div style="background: #f9fafb; padding: 40px 20px; text-align: center;">
-  <h2 style="color: #1e293b; margin-bottom: 30px;">Meet Our Team</h2>
-  <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
-    <div class="team-card">
+<div style="background: linear-gradient(135deg, #dff3fd, #fdf2f8); padding: 60px 20px; text-align: center; font-family: 'Segoe UI', sans-serif;">
+  <h2 style="color: #0f172a; font-size: 38px; margin-bottom: 50px; letter-spacing: 1px;">🌟 Meet Our Core Team 🌟</h2>
+
+  <div class="team-container">
+    
+    <!-- COO -->
+    <div class="team-card" style="background: linear-gradient(135deg, #a5f3fc, #38bdf8);">
       <img src="COO.jpg" alt="Bikiraj Bhuyan">
-      <p>COO - Mr. Bikiraj Bhuyan</p>
+      <h3>Mr. Bikiraj Bhuyan</h3>
+      <p>Chief Operating Officer (COO)</p>
       <span>"Your journey to financial freedom starts with skills."</span>
+      <div class="social-icons">
+        <a href="https://linkedin.com/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+      </div>
     </div>
-    <div class="team-card">
+
+    <!-- CEO -->
+    <div class="team-card" style="background: linear-gradient(135deg, #fda4af, #fb7185);">
       <img src="Founder.jpg" alt="Bineet Kumar Sahu">
-      <p>CEO - Er. Bineet Kumar Sahu</p>
-      <span>"Every line of code you write today builds your future tomorrow."<span>    
+      <h3>Er. Bineet Kumar Sahu</h3>
+      <p>Chief Executive Officer (CEO)</p>
+      <span>"Every line of code you write today builds your future tomorrow."</span>
+      <div class="social-icons">
+        <a href="https://www.linkedin.com/in/bineet-kumar-sahu" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.facebook.com/share/1BaXT96yKn/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/bineet_official_24" target="_blank"><i class="fab fa-instagram"></i></a>
+      </div>
     </div>
-    <div class="team-card">
+
+    <!-- Director -->
+    <div class="team-card" style="background: linear-gradient(135deg, #c4b5fd, #8b5cf6);">
       <img src="Director.jpg" alt="Aditya Pratap Sahu">
-      <p>Director - Mr. Aditya Pratap Sahu</p>
+      <h3>Mr. Aditya Pratap Sahu</h3>
+      <p>Director</p>
       <span>"Consistency in learning is the foundation of success."</span>
+      <div class="social-icons">
+        <a href="https://linkedin.com/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+      </div>
     </div>
+
   </div>
 </div>
+
+<!-- Font Awesome for Social Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+<!-- Styles -->
+<style>
+  .team-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+
+  .team-card {
+    border-radius: 20px;
+    padding: 25px;
+    width: 280px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    text-align: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .team-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+  }
+
+  .team-card img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border: 4px solid rgba(255, 255, 255, 0.8);
+    transition: transform 0.4s ease;
+  }
+
+  .team-card:hover img {
+    transform: scale(1.1);
+  }
+
+  .team-card h3 {
+    font-size: 20px;
+    margin-bottom: 8px;
+    font-weight: bold;
+  }
+
+  .team-card p {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    opacity: 0.95;
+  }
+
+  .team-card span {
+    font-style: italic;
+    font-size: 13px;
+    display: block;
+    opacity: 0.9;
+  }
+
+  .social-icons {
+    margin-top: 15px;
+  }
+
+  .social-icons a {
+    margin: 0 8px;
+    color: white;
+    font-size: 18px;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+
+  .social-icons a:hover {
+    color: #ffd700;
+    transform: scale(1.2);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .team-card {
+      width: 90%;
+    }
+  }
+</style>
 
 <footer>
   <p>📍 At/Po-Kangaon, Sohela, Bargarh, Odisha – 768033</p>
