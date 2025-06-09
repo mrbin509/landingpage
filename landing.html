@@ -967,30 +967,41 @@ function submitLeadForm(event) {
   });
 </script>
 
-
 <!-- ✅ Why Trust Us Section Start -->
-<section class="trust-section">
+<section class="trust-section" oncontextmenu="return false;">
   <h2 class="trust-title">Why Trust Us?</h2>
   <p class="trust-subtitle">Officially certified for quality, security, and innovation in education.</p>
-  
+
   <div class="certificates-container">
     <div class="certificate-card fade-in">
-      <img src="Startup.jpg" alt="Startup India Recognized" />
+      <div class="img-protect">
+        <img src="Startup.jpg" alt="Startup India Recognized" />
+        <div class="overlay"></div>
+      </div>
       <p>Startup India Recognized</p>
     </div>
-    
+
     <div class="certificate-card fade-in">
-      <img src="ISO-9001.jpg" alt="ISO 9001:2015 Certified" />
+      <div class="img-protect">
+        <img src="ISO-9001.jpg" alt="ISO 9001:2015 Certified" />
+        <div class="overlay"></div>
+      </div>
       <p>ISO 9001:2015 Quality Management</p>
     </div>
 
     <div class="certificate-card fade-in">
-      <img src="ISO-27001.jpg" alt="ISO 27001 Certified" />
+      <div class="img-protect">
+        <img src="ISO-27001.jpg" alt="ISO 27001 Certified" />
+        <div class="overlay"></div>
+      </div>
       <p>ISO 27001:2022 Information Security</p>
     </div>
 
     <div class="certificate-card fade-in">
-      <img src="MSME.jpg" alt="MSME Registered" />
+      <div class="img-protect">
+        <img src="MSME.jpg" alt="MSME Registered" />
+        <div class="overlay"></div>
+      </div>
       <p>MSME Government Registered</p>
     </div>
   </div>
@@ -1003,6 +1014,7 @@ function submitLeadForm(event) {
   color: white;
   text-align: center;
   font-family: 'Poppins', sans-serif;
+  user-select: none;
 }
 
 .trust-title {
@@ -1046,11 +1058,27 @@ function submitLeadForm(event) {
   border-color: #ff4081;
 }
 
-.certificate-card img {
+.img-protect {
+  position: relative;
+  display: inline-block;
+}
+
+.img-protect img {
   width: 80px;
   height: auto;
   margin-bottom: 15px;
   filter: drop-shadow(0 0 5px #00f2ff);
+  pointer-events: none;
+  -webkit-user-drag: none;
+}
+
+.img-protect .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
 }
 
 .certificate-card p {
