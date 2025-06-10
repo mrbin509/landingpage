@@ -731,35 +731,36 @@ function toggleFAQ(element) {
   <textarea name="message" placeholder="Message" required></textarea>
   <button type="submit">Submit</button>
 </form>
+<!-- ✅ Script to send as form-urlencoded -->
 <script>
 async function submitLeadForm(event) {
   event.preventDefault();
 
   const form = event.target;
+
   const name = form.querySelector('[name="name"]').value;
   const email = form.querySelector('[name="email"]').value;
   const countryCode = form.querySelector('[name="countryCode"]').value;
   const phone = form.querySelector('[name="phone"]').value;
   const profession = form.querySelector('[name="profession"]').value;
   const message = form.querySelector('[name="message"]').value;
-
   const fullPhone = countryCode + phone;
 
-  const data = {
-    name,
-    email,
-    phone: fullPhone,
-    profession,
-    message
-  };
+  // Prepare form-url-encoded body
+  const params = new URLSearchParams();
+  params.append("name", name);
+  params.append("email", email);
+  params.append("phone", fullPhone);
+  params.append("profession", profession);
+  params.append("message", message);
 
   try {
-    const response = await fetch("https://script.google.com/macros/s/AKfycbxqzQdThfovFmzi-QWLbhOta6oKRLEDGv3jTD2waA7h-t4pIqFQ0ycVU83laxSdnR-KfA/exec", {
+    const response = await fetch("https://script.google.com/macros/s/AKfycbxof1w4IlYFPkUKn3KjAzhtGvve0EIINqAyB8TRpyd8RoWzUeHLdbseCys5rPHkpkUE_Q/exec", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/x-www-form-urlencoded",
       },
-      body: JSON.stringify(data)
+      body: params.toString(),
     });
 
     const result = await response.json();
@@ -776,7 +777,7 @@ async function submitLeadForm(event) {
   }
 }
 </script>
-
+<!-- ✅ Script Section End -->
   </div>
 </section>
 
