@@ -322,8 +322,7 @@
     <div class="timer-box">
       ⏱ Offer ends in: <span id="countdown">10:00</span>
     </div>
-    
-   <button class="enroll-btn" onclick="document.getElementById('lead-form-section').scrollIntoView({ behavior: 'smooth' });">
+    <button class="enroll-btn" onclick="document.getElementById('lead-form').scrollIntoView({ behavior: 'smooth' });">
   Enroll Now
 </button>
   </div>
@@ -677,7 +676,7 @@ function toggleFAQ(element) {
 <!-- ✅ FAQ Section End -->
   
 <!-- ✅ Lead Form Section Start -->
-<section class="lead-form-section">
+<section id="lead-form" class="lead-form-section">
   <div class="form-container">
     <h2 class="form-title">Get in Touch 🚀</h2>
     <p class="form-subtitle">Enroll now or ask us anything — we’ll reply within 24 hours!</p>
@@ -940,6 +939,9 @@ async function submitLeadForm(event) {
       height: 300px;
       overflow: hidden;
       position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .testimonial-track {
