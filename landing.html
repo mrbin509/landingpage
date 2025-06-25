@@ -414,30 +414,92 @@
 </style>
 
 <!-- Popular Course Section -->
-<div class="course-section">
-  <h2>🎓 Popular Course</h2>
-  
-  <div class="course-card">
-    <img src="Web.jpg" alt="Python Course" class="course-image">
+<div class="course-section" style="padding: 40px; text-align: center; background-color: #f9f9f9;">
+  <h2 style="font-size: 32px; margin-bottom: 30px;">🎓 Popular Course</h2>
 
-    <h3>✨ Python Mastery Program</h3>
-    <p>From Python Basics to Advanced Projects, Django, Flask, REST API & more</p>
+  <div class="course-container" style="display: flex; flex-wrap: wrap; gap: 30px; justify-content: center;">
     
-    <div class="price-section">
-      <span class="original-price">₹4,999</span>
-      <span class="discounted-price">FREE</span>
-    </div>
-    
-    <p class="seats-left">🎯 Only <strong>5 seats</strong> left. Enroll now!</p>
-
-    <div class="timer-box">
-      ⏱ Offer ends in: <span id="countdown">10:00</span>
-    </div>
-    <button class="enroll-btn" onclick="document.getElementById('lead-form').scrollIntoView({ behavior: 'smooth' });">
+    <!-- Course 1 -->
+    <div class="course-card" style="width: 320px; background: #ffffff; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); padding: 20px;">
+      <img src="Web.jpg" alt="Python Course" style="width: 100%; border-radius: 8px; margin-bottom: 15px;">
+      <h3>✨ Python Mastery Program</h3>
+      <p>From Python Basics to Advanced Projects, Django, Flask, REST API & more</p>
+      <div class="price-section" style="margin: 10px 0;">
+        <span style="text-decoration: line-through; color: gray;">₹4,999</span>
+        <span style="color: green; font-weight: bold; margin-left: 10px;">FREE</span>
+      </div>
+      <p style="font-weight: bold;">🎯 Only <strong>5 seats</strong> left. Enroll now!</p>
+      <div class="timer-box" style="margin: 10px 0;">⏱ Offer ends in: <span id="countdown1">10:00</span></div>
+      <button class="enroll-btn" onclick="showPaymentSection()">
   Enroll Now
 </button>
+
+    </div>
+
+    <!-- Course 2 -->
+    <div class="course-card" style="width: 320px; background: #ffffff; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); padding: 20px;">
+      <img src="Web.jpg" alt="AI/ML Course" style="width: 100%; border-radius: 8px; margin-bottom: 15px;">
+      <h3>✨ AI/ML Mastery Program</h3>
+      <p>From AI/ML Basics to Advanced</p>
+      <div class="price-section" style="margin: 10px 0;">
+        <span style="text-decoration: line-through; color: gray;">₹4,999</span>
+        <p style="margin-top: 5px;">💰 Submit a successful project & earn up to ₹1000/-</p>
+      </div>
+      <p style="font-weight: bold;">🎯 Only <strong>5 seats</strong> left. Enroll now!</p>
+      <div class="timer-box" style="margin: 10px 0;">⏱ Offer ends in: <span id="countdown2">10:00</span></div>
+      <button class="enroll-btn" onclick="showPaymentSection()">
+  Enroll Now
+</button>
+
+    </div>
+
+    <!-- Course 3 -->
+    <div class="course-card" style="width: 320px; background: #ffffff; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); padding: 20px;">
+      <img src="Web.jpg" alt="Cyber Security Course" style="width: 100%; border-radius: 8px; margin-bottom: 15px;">
+      <h3>✨ Cyber Security & Ethical Hacking</h3>
+      <p>Hacking from Basics to Advanced</p>
+      <div class="price-section" style="margin: 10px 0;">
+        <span style="text-decoration: line-through; color: gray;">₹4,999</span>
+        <p style="margin-top: 5px;">💰 Submit a successful project & earn up to ₹1000/-</p>
+      </div>
+      <p style="font-weight: bold;">🎯 Only <strong>5 seats</strong> left. Enroll now!</p>
+      <div class="timer-box" style="margin: 10px 0;">⏱ Offer ends in: <span id="countdown3">10:00</span></div>
+      <button class="enroll-btn" onclick="showPaymentSection()">
+  Enroll Now
+</button>
+
+    </div>
+
   </div>
 </div>
+
+<!-- Payment Section (Initially Hidden) -->
+<div id="payment-section" style="display: none; padding: 40px; text-align: center; background: #fff; border-top: 2px solid #ccc;">
+  <h2>🔐 Complete Your Payment</h2>
+  <p>Please scan the QR code or click the button to pay.</p>
+  
+  <!-- QR Code Image Placeholder -->
+  <img src="your-qr-code.png" alt="UPI QR Code" style="max-width: 250px; margin: 20px auto; border: 1px solid #ccc; padding: 10px; border-radius: 10px;">
+
+  <!-- Pay Button via UPI -->
+  <div style="margin-top: 20px;">
+    <a href="upi://pay?pa=yourupi@upi&pn=Your%20Name&am=4999&cu=INR" style="text-decoration: none;">
+      <button style="padding: 12px 25px; font-size: 18px; background-color: #4caf50; color: white; border: none; border-radius: 8px; cursor: pointer;">
+        💳 Pay ₹4,999
+      </button>
+    </a>
+  </div>
+
+  <!-- Back Button -->
+  <div style="margin-top: 20px;">
+    <button onclick="goBackToCourses()" style="padding: 10px 20px; font-size: 16px; background-color: #ccc; border: none; border-radius: 6px; cursor: pointer;">
+      🔙 Back to Courses
+    </button>
+  </div>
+</div>
+
+
+
 
 <!-- Styles -->
 <style>
@@ -593,7 +655,7 @@ function startCountdown() {
     let minutes = Math.floor(timer / 60);
     let seconds = timer % 60;
 
-    countdownEl.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    countdownEl.textContent = ${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')};
     timer--;
 
     if (timer < 0) {
@@ -1369,7 +1431,7 @@ async function submitLeadForm(event) {
       <div class="social-icons">
         <a href="https://www.linkedin.com/in/bikiraj-bhuyan-80b031294" target="_blank"><i class="fab fa-linkedin-in"></i></a>
         <a href="https://www.facebook.com/bikiraj.bhuyan.2328?mibextid=ZbWKwL" target="_blank"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://www.instagram.com/_biki_28_" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.instagram.com/biki_28" target="_blank"><i class="fab fa-instagram"></i></a>
       </div>
     </div>
 
@@ -1539,7 +1601,7 @@ async function submitLeadForm(event) {
 
 <footer>
   <p>📍 At/Po-Kangaon, Sohela, Bargarh, Odisha – 768033</p>
-  <p>📞 +91-7978374563 | ✉️ support@dreamshelix.com</p>
+  <p>📞 +91-7978374563 | ✉ support@dreamshelix.com</p>
   <p>🔗 <a href="https://dreamshelix.com">Go to DreamsHelix Website</a></p>
   <h3>Connect with Us</h3>
   <div class="social-icons">
@@ -1607,6 +1669,20 @@ async function submitLeadForm(event) {
     }
   }
 </style>
+
+<script>
+  function showPaymentSection() {
+    document.querySelector(".course-section").style.display = "none";
+    document.getElementById("payment-section").style.display = "block";
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function goBackToCourses() {
+    document.querySelector(".course-section").style.display = "block";
+    document.getElementById("payment-section").style.display = "none";
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
 
 <!-- 🌟 WhatsApp Chat Button Start -->
 <a href="https://wa.me/917978374563" class="whatsapp-float" target="_blank">
