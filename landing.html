@@ -548,6 +548,12 @@
   }
 </style>
 
+<!-- 🎬 Logo Animation Screen -->
+  <div id="loader">
+    <img src="DreamsHelix.webp" alt="DreamsHelix Logo" class="logo">
+    <div id="loader-text">Launching DreamsHelix...</div>
+  </div>
+
 <!-- Popular Course Section -->
 <div class="course-section" style="padding: 40px; text-align: center; background-color: #f9f9f9;">
   <h2 style="font-size: 32px; margin-bottom: 30px;">🎓 Popular Course</h2>
@@ -1750,6 +1756,13 @@ async function submitLeadForm(event) {
   </div>
   <p>&copy; 2025 DreamsHelix. All Rights Reserved.</p>
 </footer>
+
+<script>
+    // Show content after animation
+    setTimeout(() => {
+      document.getElementById("main-content").style.display = "block";
+    }, 7200);
+  </script>
 
 <script>
   const colors = ['#ef4444', '#3b82f6', '#10b981', '#f59e0b', '#6366f1', '#14b8a6', '#e11d48', '#8b5cf6', '#0ea5e9'];
