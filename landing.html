@@ -5,6 +5,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>DreamsHelix</title>
   <style>
+    
+    /* Common Reset */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: black;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    #intro-loader {
+      position: fixed;
+      z-index: 9999;
+      width: 100%;
+      height: 100%;
+      background: black;
+    }
+
+    #main-content {
+      display: none;
+      position: relative;
+      z-index: 1;
+    }
+
+    .letter {
+      position: absolute;
+      font-size: 3.5rem;
+      color: white;
+      font-weight: bold;
+      text-shadow: 0 0 15px #00ffff;
+      opacity: 0;
+    }
+     /* Loader Animation End */
+    
     body {
       font-family: Arial, sans-serif;
       margin: 0;
@@ -293,6 +329,12 @@
 </head>
 <body>
 
+<div id="intro-loader">
+  <div id="text-container"></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/three@0.150.1/build/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  
 <header style="
   background: linear-gradient(135deg, #1e293b, #334155);
   color: #f1f5f9;
@@ -1663,6 +1705,109 @@ async function submitLeadForm(event) {
   }
 </style>
 
+<!-- Loader Script start -->
+<script>
+  // Setup Three.js Scene
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+  const renderer = new THREE.WebGLRenderer({ antialias: true });
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.shadowMap.enabled = true;
+
+  const introLoader = document.getElementById('intro-loader');
+  introLoader.appendChild(renderer.domElement);
+
+  // Lights and ground
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
+  scene.add(ambientLight);
+
+  const spotLight = new THREE.SpotLight(0xff00cc, 1.5);
+  spotLight.position.set(30, 60, 40);
+  spotLight.castShadow = true;
+  scene.add(spotLight);
+
+  const ground = new THREE.Mesh(
+    new THREE.PlaneGeometry(300, 300),
+    new THREE.ShadowMaterial({ opacity: 0.25 })
+  );
+  ground.rotation.x = -Math.PI / 2;
+  ground.position.y = -10;
+  ground.receiveShadow = true;
+  scene.add(ground);
+
+  // 3D Logo
+  const logo = new THREE.Mesh(
+    new THREE.TorusKnotGeometry(5, 1.5, 100, 16),
+    new THREE.MeshStandardMaterial({ color: 0x00ffff, metalness: 0.5, roughness: 0.2 })
+  );
+  logo.position.set(0, 5, 0);
+  logo.castShadow = true;
+  scene.add(logo);
+
+  camera.position.set(0, 10, 35);
+  camera.lookAt(logo.position);
+
+  function animate() {
+    requestAnimationFrame(animate);
+    logo.rotation.x += 0.01;
+    logo.rotation.y += 0.02;
+    renderer.render(scene, camera);
+  }
+  animate();
+
+  // Text Animation
+  const text = "DreamsHelix";
+  const container = document.getElementById('text-container');
+  const centerX = window.innerWidth / 2;
+  const centerY = window.innerHeight / 1.5;
+
+  const letters = [];
+
+  for (let i = 0; i < text.length; i++) {
+    const span = document.createElement('span');
+    span.className = 'letter';
+    span.innerText = text[i];
+    span.style.left = `${centerX + (i - text.length / 2) * 30}px`;
+    span.style.top = `${centerY}px`;
+    container.appendChild(span);
+    letters.push(span);
+  }
+
+  letters.forEach((el, i) => {
+    const delay = i * 0.3;
+    const drop = [2, 5, 8].includes(i);
+    if (drop) {
+      gsap.fromTo(el, { y: -200, opacity: 0 }, { opacity: 1, y: 0, duration: 1.2, delay, ease: "bounce.out" });
+    } else {
+      gsap.to(el, { opacity: 1, y: 0, duration: 1, delay, ease: "power3.out" });
+    }
+  });
+
+  // Exit Animation and Reveal Content
+  setTimeout(() => {
+    gsap.to(letters, {
+      duration: 1,
+      scale: 0.4,
+      x: -centerX / 3,
+      y: -centerY / 3,
+      stagger: 0.05,
+      ease: "power2.inOut"
+    });
+
+    // Fade out loader and show main content
+    gsap.to("#intro-loader", {
+      duration: 1.5,
+      opacity: 0,
+      onComplete: () => {
+        document.getElementById('intro-loader').style.display = "none";
+        document.getElementById('main-content').style.display = "block";
+        document.body.style.overflow = "auto"; // allow scrolling again
+      }
+    });
+  }, 6000);
+</script>
+<!-- Loader Section End-->
+  
 <!-- Course Script Start -->
 <script>
   const seats = {
