@@ -1735,25 +1735,29 @@ async function submitLeadForm(event) {
   ground.receiveShadow = true;
   scene.add(ground);
 
-  // 3D Logo
-  const logo = new THREE.Mesh(
-    new THREE.TorusKnotGeometry(5, 1.5, 100, 16),
-    new THREE.MeshStandardMaterial({ color: 0x00ffff, metalness: 0.5, roughness: 0.2 })
-  );
-  logo.position.set(0, 5, 0);
-  logo.castShadow = true;
-  scene.add(logo);
+  // Load DreamsHelix logo as a texture and add it as a plane in 3D space
+  const textureLoader = new THREE.TextureLoader();
+  textureLoader.load('dreamshelix-logo.png', function (texture) {
+    const logoGeometry = new THREE.PlaneGeometry(20, 10); // Adjust size and aspect ratio as needed
+    const logoMaterial = new THREE.MeshBasicMaterial({
+      map: texture,
+      transparent: true
+    });
+    const logo = new THREE.Mesh(logoGeometry, logoMaterial);
+    logo.position.set(0, 8, 0);
+    logo.castShadow = false;
+    scene.add(logo);
+
+    // Animate
+    function animate() {
+      requestAnimationFrame(animate);
+      logo.rotation.y += 0.01;
+      renderer.render(scene, camera);
+    }
+    animate();
+  });
 
   camera.position.set(0, 10, 35);
-  camera.lookAt(logo.position);
-
-  function animate() {
-    requestAnimationFrame(animate);
-    logo.rotation.x += 0.01;
-    logo.rotation.y += 0.02;
-    renderer.render(scene, camera);
-  }
-  animate();
 
   // Text Animation
   const text = "DreamsHelix";
@@ -1794,14 +1798,13 @@ async function submitLeadForm(event) {
       ease: "power2.inOut"
     });
 
-    // Fade out loader and show main content
     gsap.to("#intro-loader", {
       duration: 1.5,
       opacity: 0,
       onComplete: () => {
         document.getElementById('intro-loader').style.display = "none";
         document.getElementById('main-content').style.display = "block";
-        document.body.style.overflow = "auto"; // allow scrolling again
+        document.body.style.overflow = "auto";
       }
     });
   }, 6000);
