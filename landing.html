@@ -1717,7 +1717,7 @@ async function submitLeadForm(event) {
   const introLoader = document.getElementById('intro-loader');
   introLoader.appendChild(renderer.domElement);
 
-  // Lights and ground
+  // Lighting
   const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
   scene.add(ambientLight);
 
@@ -1735,36 +1735,52 @@ async function submitLeadForm(event) {
   ground.receiveShadow = true;
   scene.add(ground);
 
-  // Load DreamsHelix logo as a texture and add it as a plane in 3D space
+  // Load DreamsHelix Logo Texture
   const textureLoader = new THREE.TextureLoader();
+  let logo;
   textureLoader.load('dreamshelix-logo.png', function (texture) {
-    const logoGeometry = new THREE.PlaneGeometry(20, 10); // Adjust size and aspect ratio as needed
-    const logoMaterial = new THREE.MeshBasicMaterial({
+    const logoGeometry = new THREE.PlaneGeometry(20, 10);
+    const logoMaterial = new THREE.MeshStandardMaterial({
       map: texture,
-      transparent: true
+      transparent: true,
+      emissive: 0x00ffff, // Neon glow
+      emissiveIntensity: 0.6,
+      metalness: 0.3,
+      roughness: 0.2
     });
-    const logo = new THREE.Mesh(logoGeometry, logoMaterial);
+
+    logo = new THREE.Mesh(logoGeometry, logoMaterial);
     logo.position.set(0, 8, 0);
-    logo.castShadow = false;
+    logo.scale.set(0.2, 0.2, 0.2); // Start small
     scene.add(logo);
 
-    // Animate
-    function animate() {
-      requestAnimationFrame(animate);
-      logo.rotation.y += 0.01;
-      renderer.render(scene, camera);
-    }
-    animate();
+    // Zoom-in animation
+    gsap.to(logo.scale, {
+      x: 1, y: 1, z: 1,
+      duration: 1.5,
+      ease: "expo.out"
+    });
+
+    animate(); // Start after logo is ready
   });
 
   camera.position.set(0, 10, 35);
+  camera.lookAt(scene.position);
 
-  // Text Animation
+  // Animation Loop
+  function animate() {
+    requestAnimationFrame(animate);
+    if (logo) {
+      logo.rotation.y += 0.01;
+    }
+    renderer.render(scene, camera);
+  }
+
+  // === Text Animation ===
   const text = "DreamsHelix";
   const container = document.getElementById('text-container');
   const centerX = window.innerWidth / 2;
   const centerY = window.innerHeight / 1.5;
-
   const letters = [];
 
   for (let i = 0; i < text.length; i++) {
@@ -1787,7 +1803,7 @@ async function submitLeadForm(event) {
     }
   });
 
-  // Exit Animation and Reveal Content
+  // Exit & Reveal Content
   setTimeout(() => {
     gsap.to(letters, {
       duration: 1,
@@ -1809,6 +1825,7 @@ async function submitLeadForm(event) {
     });
   }, 6000);
 </script>
+
 <!-- Loader Section End-->
   
 <!-- Course Script Start -->
