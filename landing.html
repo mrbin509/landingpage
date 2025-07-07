@@ -414,80 +414,89 @@
   }
 </style>
 
-<!-- Course Section -->
+<!-- Popular Course Section -->
 <div class="course-section" style="padding: 40px; text-align: center; background-color: #f9f9f9;">
-  <h2 style="font-size: 32px; margin-bottom: 30px;">🎓 Popular Courses</h2>
+  <h2 style="font-size: 32px; margin-bottom: 30px;">🎓 Popular Course</h2>
 
   <div class="course-container" style="display: flex; flex-wrap: wrap; gap: 30px; justify-content: center;">
     
     <!-- Course 1 -->
-    <div class="course-card" style="width: 320px; background: #fff; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); padding: 20px;">
+    <div class="course-card" style="width: 320px; background: #ffffff; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); padding: 20px;">
       <img src="Web.jpg" alt="Python Course" style="width: 100%; border-radius: 8px; margin-bottom: 15px;">
       <h3>✨ Python Mastery Program</h3>
-      <p>From Basics to Advanced with Django, Flask, and REST APIs</p>
-      <div class="price-section">
-        <span style="text-decoration: line-through; color: red>₹9,999</span>
-        <span color: green>₹5,499</span>
-        <p style="margin-top: 5px;">💰 Get Paid Project</p>
+      <p>From Python Basics to Advanced Projects, Django, Flask, REST API & more</p>
+      <div class="price-section" style="margin: 10px 0;">
+        <span style="text-decoration: line-through; color: gray;">₹4,999</span>
+        <span style="color: green; font-weight: bold; margin-left: 10px;">FREE</span>
       </div>
-      <p style="font-weight: bold;">🎯 Remaining Seats: <span id="seats-aiml">10</span></p>
-      <button onclick="showPaymentOptions('python')" style="margin-top: 10px;">Enroll Now</button>
+      <p style="font-weight: bold;">🎯 Only <strong>5 seats</strong> left. Enroll now!</p>
+      <div class="timer-box" style="margin: 10px 0;">⏱ Offer ends in: <span id="countdown1">10:00</span></div>
+      <button class="enroll-btn" onclick="showPaymentSection()">
+  Enroll Now
+</button>
+
     </div>
 
-
     <!-- Course 2 -->
-    <div class="course-card" style="width: 320px; background: #fff; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); padding: 20px;">
-      <img src="Web.jpg" alt="AI ML Course" style="width: 100%; border-radius: 8px; margin-bottom: 15px;">
+    <div class="course-card" style="width: 320px; background: #ffffff; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); padding: 20px;">
+      <img src="Web.jpg" alt="AI/ML Course" style="width: 100%; border-radius: 8px; margin-bottom: 15px;">
       <h3>✨ AI/ML Mastery Program</h3>
-      <p>AI and Machine Learning from Scratch to Pro</p>
-      <div class="price-section">
-        <span style="text-decoration: line-through; color: red>₹9,999</span>
-        <span color: green>₹5,499</span>
-        <p style="margin-top: 5px;">💰 Get Paid Project</p>
+      <p>From AI/ML Basics to Advanced</p>
+      <div class="price-section" style="margin: 10px 0;">
+        <span style="text-decoration: line-through; color: gray;">₹4,999</span>
+        <p style="margin-top: 5px;">💰 Submit a successful project & earn up to ₹1000/-</p>
       </div>
-      <p style="font-weight: bold;">🎯 Remaining Seats: <span id="seats-aiml">10</span></p>
-      <button onclick="showPaymentOptions('aiml')" style="margin-top: 10px;">Enroll Now</button>
+      <p style="font-weight: bold;">🎯 Only <strong>5 seats</strong> left. Enroll now!</p>
+      <div class="timer-box" style="margin: 10px 0;">⏱ Offer ends in: <span id="countdown2">10:00</span></div>
+      <button class="enroll-btn" onclick="showPaymentSection()">
+  Enroll Now
+</button>
+
     </div>
 
     <!-- Course 3 -->
-    <div class="course-card" style="width: 320px; background: #fff; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); padding: 20px;">
-      <img src="Web.jpg" alt="Cyber Security" style="width: 100%; border-radius: 8px; margin-bottom: 15px;">
+    <div class="course-card" style="width: 320px; background: #ffffff; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); padding: 20px;">
+      <img src="Web.jpg" alt="Cyber Security Course" style="width: 100%; border-radius: 8px; margin-bottom: 15px;">
       <h3>✨ Cyber Security & Ethical Hacking</h3>
-      <p>Learn Hacking From Basic to Advanced</p>
-      <div class="price-section">
-        <span style="text-decoration: line-through; color: red>₹9,999</span>
-        <span color: green>₹5,499</span>
-        <p style="margin-top: 5px;">💰 Get Paid Project</p>
+      <p>Hacking from Basics to Advanced</p>
+      <div class="price-section" style="margin: 10px 0;">
+        <span style="text-decoration: line-through; color: gray;">₹4,999</span>
+        <p style="margin-top: 5px;">💰 Submit a successful project & earn up to ₹1000/-</p>
       </div>
-      <p style="font-weight: bold;">🎯 Remaining Seats: <span id="seats-cyber">10</span></p>
-      <button onclick="showPaymentOptions('cyber')" style="margin-top: 10px;">Enroll Now</button>
+      <p style="font-weight: bold;">🎯 Only <strong>5 seats</strong> left. Enroll now!</p>
+      <div class="timer-box" style="margin: 10px 0;">⏱ Offer ends in: <span id="countdown3">10:00</span></div>
+      <button class="enroll-btn" onclick="showPaymentSection()">
+  Enroll Now
+</button>
+
     </div>
+
   </div>
 </div>
 
-<!-- Payment Section -->
-<div id="payment-section" style="display: none; padding: 40px; text-align: center; background: #fff;">
-  <h2>🔐 Complete Your Enrollment</h2>
-  <p>Choose payment option to book your seat in <strong id="selected-course-name">Course</strong>.</p>
+<!-- Payment Section (Initially Hidden) -->
+<div id="payment-section" style="display: none; padding: 40px; text-align: center; background: #fff; border-top: 2px solid #ccc;">
+  <h2>🔐 Complete Your Payment</h2>
+  <p>Please scan the QR code or click the button to pay.</p>
+  
+  <!-- QR Code Image Placeholder -->
+  <img src="your-qr-code.png" alt="UPI QR Code" style="max-width: 250px; margin: 20px auto; border: 1px solid #ccc; padding: 10px; border-radius: 10px;">
 
-  <div style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-top: 30px;">
-    <!-- Advance -->
-    <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_Qq9SX8Mijo3u5W" async> </script> </form>
-
-    <!-- Full Payment -->
-    <div style="border: 1px solid #ccc; border-radius: 10px; padding: 20px; width: 280px;">
-      <h3>✅ Full Payment (Save ₹500)</h3>
-      <p>Pay ₹4,999 and get full access.</p>
-     <script src="https://dreamshelix.com/cart/exam_package/0?source=exam&id=279&lcco_id=17765#onlinePay"> </script>
-      <br><br>
-      <a href="#" id="full-pay-link" onclick="decreaseSeatCount();">
-        <button style="padding: 10px 20px; background: #4CAF50; color: #fff; border: none; border-radius: 6px; cursor: pointer;">Pay ₹4,999</button>
-      </a>
-    </div>
+  <!-- Pay Button via UPI -->
+  <div style="margin-top: 20px;">
+    <a href="upi://pay?pa=yourupi@upi&pn=Your%20Name&am=4999&cu=INR" style="text-decoration: none;">
+      <button style="padding: 12px 25px; font-size: 18px; background-color: #4caf50; color: white; border: none; border-radius: 8px; cursor: pointer;">
+        💳 Pay ₹4,999
+      </button>
+    </a>
   </div>
 
-  <br>
-  <button onclick="goBackToCourses()" style="margin-top: 20px; padding: 10px 20px; background: #ccc; border: none; border-radius: 6px; cursor: pointer;">🔙 Back to Courses</button>
+  <!-- Back Button -->
+  <div style="margin-top: 20px;">
+    <button onclick="goBackToCourses()" style="padding: 10px 20px; font-size: 16px; background-color: #ccc; border: none; border-radius: 6px; cursor: pointer;">
+      🔙 Back to Courses
+    </button>
+  </div>
 </div>
 
 <!-- Styles -->
