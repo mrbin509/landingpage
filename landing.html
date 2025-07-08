@@ -414,36 +414,44 @@
   }
 </style>
 
-  
+
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #f9f9f9;
+      background-color: #f2f7fa;
     }
     .course-section {
-      padding: 40px;
+      padding: 40px 20px;
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
     .course-container {
-      display: flex;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
       gap: 30px;
-      justify-content: center;
+      width: 100%;
+      max-width: 1200px;
     }
     .course-card {
-      width: 320px;
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      background: #ffffff;
+      border-radius: 15px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
       padding: 20px;
       transition: transform 0.3s, box-shadow 0.3s, border 0.3s;
       border: 2px solid transparent;
+      animation: fadeInUp 0.5s ease forwards;
     }
     .course-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-      border: 2px solid #00f7ff;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      border: 2px solid #00c3ff;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     .enroll-btn {
       padding: 10px 20px;
@@ -453,6 +461,9 @@
       cursor: pointer;
       margin: 5px;
       transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+    .enroll-btn:active {
+      transform: scale(0.95);
     }
     .enroll-btn:hover {
       transform: scale(1.05);
@@ -487,6 +498,7 @@
       align-items: center;
       gap: 10px;
       margin-bottom: 10px;
+      flex-wrap: wrap;
     }
     .coupon-code {
       background: #ffd;
@@ -500,13 +512,26 @@
       text-align: center;
       display: none;
     }
+    .seat-note {
+      font-size: 14px;
+      color: #ff6600;
+      margin: 10px 0 5px;
+      font-weight: bold;
+    }
+    @media (max-width: 768px) {
+      .enroll-btn {
+        font-size: 14px;
+        padding: 8px 16px;
+      }
+      .coupon-code {
+        font-size: 14px;
+      }
+    }
   </style>
 
 <div class="course-section">
   <h2>🎓 Popular Courses</h2>
-  <div class="course-container" id="course-container">
-    <!-- Cards will be injected dynamically below -->
-  </div>
+  <div class="course-container" id="course-container"></div>
 </div>
 
 <!-- Seat Booking Payment Section -->
@@ -517,17 +542,16 @@
 
 <script>
   const courses = [
-    { title: "Python Mastery Program", desc: "From Python Basics to Advanced Projects, Django, Flask, REST API & more", img: "Web.jpg", countdownId: "countdown1", btnId: "course1-buttons", fullPaymentSlug: "python" },
-    { title: "AI/ML Mastery Program", desc: "From AI & ML basics to Deep Learning, NLP, and deployment", img: "Web.jpg", countdownId: "countdown2", btnId: "course2-buttons", fullPaymentSlug: "ai" },
-    { title: "Data Science Mastery", desc: "Data Analysis, Pandas, NumPy, Visualization, Statistics, ML and Projects", img: "Web.jpg", countdownId: "countdown3", btnId: "course3-buttons", fullPaymentSlug: "data" },
-    { title: "Cyber Security & Ethical Hacking", desc: "Learn Footprinting, Network Hacking, Web App Security, Tools & More", img: "Web.jpg", countdownId: "countdown4", btnId: "course4-buttons", fullPaymentSlug: "cyber" },
-    { title: "Web Development Mastery", desc: "HTML, CSS, JavaScript, React, Node.js, MongoDB & Full Stack Projects", img: "Web.jpg", countdownId: "countdown5", btnId: "course5-buttons", fullPaymentSlug: "web" }
+    { title: "Python Mastery Program", desc: "From Python Basics to Advanced Projects, Django, Flask, REST API & more", img: "Web.jpg", countdownId: "countdown1", btnId: "course1-buttons", fullPaymentUrl: "https://dreamshelix.com/cart/python" },
+    { title: "AI/ML Mastery Program", desc: "From AI & ML basics to Deep Learning, NLP, and deployment", img: "Web.jpg", countdownId: "countdown2", btnId: "course2-buttons", fullPaymentUrl: "https://dreamshelix.com/cart/ai" },
+    { title: "Data Science Mastery", desc: "Data Analysis, Pandas, NumPy, Visualization, Statistics, ML and Projects", img: "Web.jpg", countdownId: "countdown3", btnId: "course3-buttons", fullPaymentUrl: "https://dreamshelix.com/cart/data" },
+    { title: "Cyber Security & Ethical Hacking", desc: "Learn Footprinting, Network Hacking, Web App Security, Tools & More", img: "Web.jpg", countdownId: "countdown4", btnId: "course4-buttons", fullPaymentUrl: "https://dreamshelix.com/cart/cyber" },
+    { title: "Web Development Mastery", desc: "HTML, CSS, JavaScript, React, Node.js, MongoDB & Full Stack Projects", img: "Web.jpg", countdownId: "countdown5", btnId: "course5-buttons", fullPaymentUrl: "https://dreamshelix.com/cart/web" }
   ];
 
   const container = document.getElementById("course-container");
 
   courses.forEach((course, index) => {
-    const fullPaymentUrl = `https://dreamshelix.com/cart/${course.fullPaymentSlug}`;
     const html = `
     <div class="course-card">
       <img src="${course.img}" alt="${course.title}" style="width: 100%; border-radius: 8px; margin-bottom: 15px;">
@@ -536,8 +560,9 @@
       <div><span style="text-decoration: line-through; color: gray;">₹9,999</span> <span style="color: green; font-weight: bold; margin-left: 10px;">₹5,499</span></div>
       <p style="font-weight: bold;">🎯 Only <strong>5 seats</strong> left. Enroll now!</p>
       <div>⏱ Offer ends in: <span id="${course.countdownId}">10:00</span></div>
-      <button onclick="toggleButtons('${course.btnId}', 'back-${index}')" class="enroll-btn main-btn">🚀 Enroll Now</button>
+      <button onclick="toggleButtons('${course.btnId}', 'back-${index}'); animateClick(this)" class="enroll-btn main-btn">🚀 Enroll Now</button>
       <div id="${course.btnId}" style="display: none;">
+        <p class="seat-note">Pay ₹1000 and reserve your seat. Pay the remaining before the course starts.</p>
         <button class="enroll-btn seat-btn" onclick="showPaymentSection('back-${index}')">💺 Book Seat (₹1000)</button>
         <div class="or-line">OR</div>
         <div class="highlight">🎉 Flat ₹500 OFF on Full Payment!</div>
@@ -545,11 +570,11 @@
           <div id="code${index+1}" class="coupon-code" onclick="copyCoupon('code${index+1}')">FULL500</div>
           <span style="font-size: 14px; color: green;">Click to copy</span>
         </div>
-        <a href="${fullPaymentUrl}" target="_blank">
+        <a href="${course.fullPaymentUrl}" target="_blank">
           <button class="enroll-btn full-btn">💳 Full Payment (₹5499)</button>
         </a>
         <div id="back-${index}" class="back-button">
-          <button onclick="goBackToCourses('${course.btnId}', 'back-${index}')" class="enroll-btn" style="background-color: #ccc;">🔙 Back to Courses</button>
+          <button onclick="goBackToCourses('${course.btnId}', 'back-${index}');" class="enroll-btn" style="background-color: #ccc;">🔙 Back to Courses</button>
         </div>
       </div>
     </div>`;
@@ -594,12 +619,17 @@
     setInterval(updateTimer, 1000);
   }
 
+  function animateClick(element) {
+    element.style.transform = 'scale(0.95)';
+    setTimeout(() => {
+      element.style.transform = '';
+    }, 150);
+  }
+
   courses.forEach(course => {
     startCountdown(course.countdownId, 10);
   });
 </script>
-
-
 
   
 <!-- Styles -->
