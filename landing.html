@@ -515,13 +515,29 @@
   <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_Qq9SX8Mijo3u5W" async> </script> </form>
 </div>
   
-  <!-- Back Button -->
-  <div style="margin-top: 20px;">
-    <button onclick="goBackToCourses()" style="padding: 10px 20px; font-size: 16px; background-color: #ccc; border: none; border-radius: 6px; cursor: pointer;">
-      🔙 Back to Courses
-    </button>
-  </div>
+ <!-- Back Button (Initially Hidden and Centered) -->
+<div id="back-button" style="margin-top: 20px; text-align: center; display: none;">
+  <button onclick="goBackToCourses()" style="padding: 10px 20px; font-size: 16px; background-color: #ccc; border: none; border-radius: 6px; cursor: pointer;">
+    🔙 Back to Courses
+  </button>
 </div>
+
+<script>
+  // Show Back Button when a course's payment options are opened
+  function showBackButton() {
+    document.getElementById("back-button").style.display = "block";
+  }
+
+  // Hide all payment options and the back button
+  function goBackToCourses() {
+    document.querySelectorAll('[id^="payment-options"]').forEach(el => {
+      el.classList.add("hidden");
+    });
+    document.getElementById("back-button").style.display = "none";
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+</script>
+
 
 <!-- Styles -->
 <style>
