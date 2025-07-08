@@ -516,14 +516,41 @@
 </div>
   
 <!-- Back Button -->
-  <div id="back-button" style="margin-top: 20px; text-align: center; display: none;">
+  <div id="back-button" style="margin-top: 20px; text-align: center;">
     <button onclick="goBackToCourses()" style="padding: 10px 20px; font-size: 16px; background-color: #ccc; border: none; border-radius: 6px; cursor: pointer;">
       🔙 Back to Courses
     </button>
   </div>
 </div>
 
+  <script>
+  function startCountdown(elementId, minutes) {
+    let seconds = minutes * 60;
+    const countdownElement = document.getElementById(elementId);
 
+    const interval = setInterval(() => {
+      if (seconds <= 0) {
+        clearInterval(interval);
+        countdownElement.innerText = "00:00";
+        return;
+      }
+
+      let mins = Math.floor(seconds / 60);
+      let secs = seconds % 60;
+
+      countdownElement.innerText = 
+        ${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')};
+
+      seconds--;
+    }, 1000);
+  }
+
+  // Start 10-minute countdowns for each course
+  startCountdown("countdown1", 10);
+  startCountdown("countdown2", 10);
+  startCountdown("countdown3", 10);
+</script>
+  
 <!-- Styles -->
 <style>
   body {
@@ -1706,34 +1733,6 @@ async function submitLeadForm(event) {
   }
 </style>
 <!-- 🌟 WhatsApp Chat Button End -->
-
-  <script>
-  function startCountdown(elementId, minutes) {
-    let seconds = minutes * 60;
-    const countdownElement = document.getElementById(elementId);
-
-    const interval = setInterval(() => {
-      if (seconds <= 0) {
-        clearInterval(interval);
-        countdownElement.innerText = "00:00";
-        return;
-      }
-
-      let mins = Math.floor(seconds / 60);
-      let secs = seconds % 60;
-
-      countdownElement.innerText = 
-        ${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')};
-
-      seconds--;
-    }, 1000);
-  }
-
-  // Start 10-minute countdowns for each course
-  startCountdown("countdown1", 10);
-  startCountdown("countdown2", 10);
-  startCountdown("countdown3", 10);
-</script>
 
 </body>
 </html>
