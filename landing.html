@@ -419,77 +419,95 @@
   <h2 style="font-size: 32px; margin-bottom: 30px;">🎓 Popular Course</h2>
 
   <div class="course-container" style="display: flex; flex-wrap: wrap; gap: 30px; justify-content: center;">
-    
-    <!-- Course 1 -->
+
+    <!-- Course Template Start -->
     <div class="course-card" style="width: 320px; background: #ffffff; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); padding: 20px;">
       <img src="Web.jpg" alt="Python Course" style="width: 100%; border-radius: 8px; margin-bottom: 15px;">
       <h3>✨ Python Mastery Program</h3>
       <p>From Python Basics to Advanced Projects, Django, Flask, REST API & more</p>
       <div class="price-section" style="margin: 10px 0;">
-        <span style="text-decoration: line-through; color: gray;">₹4,999</span>
-        <span style="color: green; font-weight: bold; margin-left: 10px;">FREE</span>
+        <span style="text-decoration: line-through; color: gray;">₹9,999</span>
+        <span style="color: green; font-weight: bold; margin-left: 10px;">₹5,499</span>
       </div>
       <p style="font-weight: bold;">🎯 Only <strong>5 seats</strong> left. Enroll now!</p>
       <div class="timer-box" style="margin: 10px 0;">⏱ Offer ends in: <span id="countdown1">10:00</span></div>
-      <button class="enroll-btn" onclick="showPaymentSection()">
-  Enroll Now
-</button>
 
+      <!-- Enroll Now Button -->
+      <button onclick="toggleButtons('course1-buttons')" class="enroll-btn" style="background-color: #007BFF; color: white; margin-bottom: 10px;">🚀 Enroll Now</button>
+
+      <!-- Hidden Buttons -->
+      <div id="course1-buttons" style="display: none;">
+        <button class="enroll-btn" onclick="showPaymentSection()" style="margin-bottom: 10px;">💺 Book Seat (₹1000)</button>
+        <a href="https://dreamshelix.com/cart/exam_package/0?source=exam&id=279&lcco_id=17765#onlinePay" target="_blank">
+          <button class="enroll-btn" style="background-color: #4CAF50; color: white;">💳 Full Payment (₹5499)</button>
+        </a>
+      </div>
     </div>
 
-    <!-- Course 2 -->
+    <!-- Repeat for Course 2 -->
     <div class="course-card" style="width: 320px; background: #ffffff; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); padding: 20px;">
       <img src="Web.jpg" alt="AI/ML Course" style="width: 100%; border-radius: 8px; margin-bottom: 15px;">
       <h3>✨ AI/ML Mastery Program</h3>
       <p>From AI/ML Basics to Advanced</p>
       <div class="price-section" style="margin: 10px 0;">
-        <span style="text-decoration: line-through; color: gray;">₹4,999</span>
-        <p style="margin-top: 5px;">💰 Submit a successful project & earn up to ₹1000/-</p>
+        <span style="text-decoration: line-through; color: gray;">₹9,999</span>
+        <span style="color: green; font-weight: bold; margin-left: 10px;">₹5,499</span>
       </div>
       <p style="font-weight: bold;">🎯 Only <strong>5 seats</strong> left. Enroll now!</p>
       <div class="timer-box" style="margin: 10px 0;">⏱ Offer ends in: <span id="countdown2">10:00</span></div>
-      <button class="enroll-btn" onclick="showPaymentSection()">
-  Enroll Now
-</button>
 
+      <button onclick="toggleButtons('course2-buttons')" class="enroll-btn" style="background-color: #007BFF; color: white; margin-bottom: 10px;">🚀 Enroll Now</button>
+
+      <div id="course2-buttons" style="display: none;">
+        <button class="enroll-btn" onclick="showPaymentSection()" style="margin-bottom: 10px;">💺 Book Seat (₹1000)</button>
+        <a href="https://dreamshelix.com/cart/exam_package/0?source=exam&id=279&lcco_id=17765#onlinePay" target="_blank">
+          <button class="enroll-btn" style="background-color: #4CAF50; color: white;">💳 Full Payment (₹5499)</button>
+        </a>
+      </div>
     </div>
 
-    <!-- Course 3 -->
+    <!-- Repeat for Course 3 -->
     <div class="course-card" style="width: 320px; background: #ffffff; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); padding: 20px;">
       <img src="Web.jpg" alt="Cyber Security Course" style="width: 100%; border-radius: 8px; margin-bottom: 15px;">
       <h3>✨ Cyber Security & Ethical Hacking</h3>
       <p>Hacking from Basics to Advanced</p>
       <div class="price-section" style="margin: 10px 0;">
-        <span style="text-decoration: line-through; color: gray;">₹4,999</span>
-        <p style="margin-top: 5px;">💰 Submit a successful project & earn up to ₹1000/-</p>
+        <span style="text-decoration: line-through; color: gray;">₹9,999</span>
+        <span style="color: green; font-weight: bold; margin-left: 10px;">₹5,499</span>
       </div>
       <p style="font-weight: bold;">🎯 Only <strong>5 seats</strong> left. Enroll now!</p>
       <div class="timer-box" style="margin: 10px 0;">⏱ Offer ends in: <span id="countdown3">10:00</span></div>
-      <button class="enroll-btn" onclick="showPaymentSection()">
-  Enroll Now
-</button>
 
+      <button onclick="toggleButtons('course3-buttons')" class="enroll-btn" style="background-color: #007BFF; color: white; margin-bottom: 10px;">🚀 Enroll Now</button>
+
+      <div id="course3-buttons" style="display: none;">
+        <button class="enroll-btn" onclick="showPaymentSection()" style="margin-bottom: 10px;">💺 Book Seat (₹1000)</button>
+        <a href="https://dreamshelix.com/cart/exam_package/0?source=exam&id=279&lcco_id=17765#onlinePay" target="_blank">
+          <button class="enroll-btn" style="background-color: #4CAF50; color: white;">💳 Full Payment (₹5499)</button>
+        </a>
+      </div>
     </div>
 
   </div>
 </div>
 
-<!-- Payment Section (Initially Hidden) -->
-<div id="payment-section" style="display: none; padding: 40px; text-align: center; background: #fff; border-top: 2px solid #ccc;">
-  <h2>🔐 Complete Your Payment</h2>
-  <p>Please scan the QR code or click the button to pay.</p>
-  
-  <!-- QR Code Image Placeholder -->
-  <img src="your-qr-code.png" alt="UPI QR Code" style="max-width: 250px; margin: 20px auto; border: 1px solid #ccc; padding: 10px; border-radius: 10px;">
+<!-- JavaScript to Toggle Buttons -->
+<script>
+  function toggleButtons(id) {
+    const buttonDiv = document.getElementById(id);
+    if (buttonDiv.style.display === "none") {
+      buttonDiv.style.display = "block";
+    } else {
+      buttonDiv.style.display = "none";
+    }
+  }
 
-  <!-- Pay Button via UPI -->
-  <div style="margin-top: 20px;">
-    <a href="upi://pay?pa=yourupi@upi&pn=Your%20Name&am=4999&cu=INR" style="text-decoration: none;">
-      <button style="padding: 12px 25px; font-size: 18px; background-color: #4caf50; color: white; border: none; border-radius: 8px; cursor: pointer;">
-        💳 Pay ₹4,999
-      </button>
-    </a>
-  </div>
+  function showPaymentSection() {
+    // Example function you might be using
+    alert("Redirecting to payment...");
+    // Add actual logic here if needed
+  }
+</script>
 
   <!-- Back Button -->
   <div style="margin-top: 20px;">
@@ -642,32 +660,6 @@
     }
   }
 </style>
-
-<!-- Timer Script -->
-<script>
-function startCountdown() {
-  let timer = 600;
-  const countdownEl = document.getElementById("countdown");
-
-  setInterval(() => {
-    let minutes = Math.floor(timer / 60);
-    let seconds = timer % 60;
-
-    countdownEl.textContent = ${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')};
-    timer--;
-
-    if (timer < 0) {
-      timer = 600;
-    }
-  }, 1000);
-}
-
-window.onload = startCountdown;
-
-function enrollForm() {
-  window.location.href = "https://dreamshelix.com/enroll"; // Replace with your real link
-}
-</script>
 
 <!-- Course Brochure Download Section -->
 <div style="background: #e0f7fa; padding: 50px 20px; text-align: center; border-top: 2px solid #bae6fd;">
@@ -1670,45 +1662,16 @@ async function submitLeadForm(event) {
   
 <!-- Course Script Start -->
 <script>
-  const seats = {
-    python: 10000,
-    aiml: 10000,
-    cyber: 10000
-  };
-
-  let selectedCourse = '';
-
-  function showPaymentOptions(course) {
-    selectedCourse = course;
-
-    document.querySelector('.course-section').style.display = 'none';
-    document.getElementById('payment-section').style.display = 'block';
-
-    // Show course name
-    const courseNames = {
-      python: 'Python Mastery Program',
-      aiml: 'AI/ML Mastery Program',
-      cyber: 'Cyber Security & Ethical Hacking'
-    };
-    document.getElementById('selected-course-name').innerText = courseNames[course];
-
-    // Simulated UPI payment links
-    document.getElementById('advance-pay-link').href = upi://pay?pa=yourupi@upi&pn=Your%20Name&am=500&cu=INR;
-    document.getElementById('full-pay-link').href = upi://pay?pa=yourupi@upi&pn=Your%20Name&am=4799&cu=INR;
+  function showPaymentSection() {
+    document.querySelector(".course-section").style.display = "none";
+    document.getElementById("payment-section").style.display = "block";
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   function goBackToCourses() {
-    document.querySelector('.course-section').style.display = 'block';
-    document.getElementById('payment-section').style.display = 'none';
-  }
-
-  function decreaseSeatCount() {
-    if (seats[selectedCourse] > 0) {
-      seats[selectedCourse]--;
-      document.getElementById(seats-${selectedCourse}).innerText = seats[selectedCourse];
-    } else {
-      alert("No seats available.");
-    }
+    document.querySelector(".course-section").style.display = "block";
+    document.getElementById("payment-section").style.display = "none";
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 </script>
 <!-- Course Script End -->
@@ -1736,6 +1699,34 @@ async function submitLeadForm(event) {
   }
 </style>
 <!-- 🌟 WhatsApp Chat Button End -->
+
+  <script>
+  function startCountdown(elementId, minutes) {
+    let seconds = minutes * 60;
+    const countdownElement = document.getElementById(elementId);
+
+    const interval = setInterval(() => {
+      if (seconds <= 0) {
+        clearInterval(interval);
+        countdownElement.innerText = "00:00";
+        return;
+      }
+
+      let mins = Math.floor(seconds / 60);
+      let secs = seconds % 60;
+
+      countdownElement.innerText = 
+        ${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')};
+
+      seconds--;
+    }, 1000);
+  }
+
+  // Start 10-minute countdowns for each course
+  startCountdown("countdown1", 10);
+  startCountdown("countdown2", 10);
+  startCountdown("countdown3", 10);
+</script>
 
 </body>
 </html>
