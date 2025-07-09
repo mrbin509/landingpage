@@ -602,12 +602,6 @@
     window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
   }
 
-  function goBackToCourses() {
-  document.getElementById("payment-section").style.display = "none";
-  document.getElementById("paymentBackButton").style.display = "none";
-  document.querySelector(".course-section").style.display = "flex";
-}
-
   function copyCoupon(id) {
     const code = document.getElementById(id).innerText;
     navigator.clipboard.writeText(code).then(() => {
@@ -1824,6 +1818,13 @@ async function submitLeadForm(event) {
   }
 </style>
 <!-- 🌟 WhatsApp Chat Button End -->
-
+<script>
+ function goBackToCourses() {
+  document.getElementById("payment-section").style.display = "none";
+  document.getElementById("paymentBackButton").style.display = "none";
+  document.querySelector(".course-section").style.display = "flex";
+}
+</script>
+  
 </body>
 </html>
