@@ -546,7 +546,7 @@ courses.forEach((course, index) => {
       <button onclick="toggleButtons('${course.btnId}')" class="enroll-btn main-btn">🚀 Enroll Now</button>
       <div id="${course.btnId}" style="display: none;">
         <p class="highlight">🪙 Book your seat now with just ₹1000 and pay the rest before course starts!</p>
-        <button class="enroll-btn seat-btn" onclick="alert('Redirect to seat booking payment')">💺 Book Seat (₹1000)</button>
+        <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_Qq9SX8Mijo3u5W" async> </script> </form>
         <div class="highlight">💥 Make full payment and get flat ₹500 OFF! Apply coupon code below</div>
         <div class="coupon-box">
           <div id="code${index+1}" class="coupon-code" onclick="copyCoupon('code${index+1}')">FULL500</div>
