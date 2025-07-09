@@ -524,12 +524,6 @@
 const courses = [
   { title: "Python Mastery Program", desc: "From Basics to Advanced Projects", img: "Web.jpg", countdownId: "countdown1", btnId: "course1-buttons", fullPaymentUrl: "https://dreamshelix.com/cart/python" },
   { title: "AI/ML Mastery Program", desc: "AI & ML basics to Deep Learning", img: "Web.jpg", countdownId: "countdown2", btnId: "course2-buttons", fullPaymentUrl: "https://dreamshelix.com/cart/ai" },
-  { title: "Data Science Mastery", desc: "Data Analysis, Pandas, NumPy, Visualization, Statistics, ML and Projects", img: "Web.jpg", countdownId: "countdown3", btnId: "course3-buttons", fullPaymentUrl: "https://dreamshelix.com/cart/data" },
-  { title: "Cyber Security & Ethical Hacking", desc: "Learn Footprinting, Network Hacking, Web App Security, Tools & More", img: "Web.jpg", countdownId: "countdown4", btnId: "course4-buttons", fullPaymentUrl: "https://dreamshelix.com/cart/cyber" },
-  { title: "Web Development Mastery", desc: "HTML, CSS, JavaScript, React, Node.js, MongoDB & Full Stack Projects", img: "Web.jpg", countdownId: "countdown5", btnId: "course5-buttons", fullPaymentUrl: "https://dreamshelix.com/cart/web" },
-  { title: "Java Programming Essentials", desc: "Java basics to OOPs, Collections, JDBC & Mini Projects", img: "Web.jpg", countdownId: "countdown6", btnId: "course6-buttons", fullPaymentUrl: "https://dreamshelix.com/cart/java" },
-  { title: "Stock Market & Trading", desc: "Learn Technical Analysis, Indicators, Psychology of Trading", img: "Web.jpg", countdownId: "countdown7", btnId: "course7-buttons", fullPaymentUrl: "https://dreamshelix.com/cart/stock" },
-  { title: "Cloud Computing & DevOps", desc: "AWS, Docker, CI/CD, Jenkins, Kubernetes & Deployment", img: "Web.jpg", countdownId: "countdown8", btnId: "course8-buttons", fullPaymentUrl: "https://dreamshelix.com/cart/cloud" },
 ];
 
 const container = document.getElementById("course-container");
@@ -546,7 +540,7 @@ courses.forEach((course, index) => {
       <button onclick="toggleButtons('${course.btnId}')" class="enroll-btn main-btn">🚀 Enroll Now</button>
       <div id="${course.btnId}" style="display: none;">
         <p class="highlight">🪙 Book your seat now with just ₹1000 and pay the rest before course starts!</p>
-        <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_Qq9SX8Mijo3u5W" async> </script> </form>
+        <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_Qq9SX8Mijo3u5W" async></script></form>
         <div class="highlight">💥 Make full payment and get flat ₹500 OFF! Apply coupon code below</div>
         <div class="coupon-box">
           <div id="code${index+1}" class="coupon-code" onclick="copyCoupon('code${index+1}')">FULL500</div>
@@ -564,9 +558,16 @@ courses.forEach((course, index) => {
   container.innerHTML += html;
 });
 
+let currentlyOpen = null;
+
 function toggleButtons(id) {
+  if (currentlyOpen && currentlyOpen !== id) {
+    document.getElementById(currentlyOpen).style.display = 'none';
+  }
   const el = document.getElementById(id);
-  el.style.display = el.style.display === 'none' ? 'block' : 'none';
+  const isVisible = el.style.display === 'block';
+  el.style.display = isVisible ? 'none' : 'block';
+  currentlyOpen = isVisible ? null : id;
 }
 
 function copyCoupon(id) {
@@ -594,6 +595,7 @@ courses.forEach(course => {
   startCountdown(course.countdownId, 10);
 });
 </script>
+
 
 <!-- Course Brochure Download Section -->
 <div style="background: #e0f7fa; padding: 50px 20px; text-align: center; border-top: 2px solid #bae6fd;">
