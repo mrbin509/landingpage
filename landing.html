@@ -414,188 +414,175 @@
   }
 </style>
 
-<style>
-  body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f2f7fa;
-  }
-  .course-section {
-    padding: 40px 20px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .course-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-    max-width: 1200px;
-  }
-  .course-card {
-    background: #ffffff;
-    border-radius: 15px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    transition: transform 0.3s, box-shadow 0.3s;
-    border: 2px solid #00e0ff;
-    animation: fadeInUp 0.5s ease forwards;
-    flex: 1 1 calc(33% - 30px);
-    max-width: 350px;
-  }
-  .course-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2), 0 0 15px #00e0ff;
-  }
-  @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .enroll-btn {
-    padding: 10px 20px;
-    font-size: 16px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    margin: 5px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-  }
-  .enroll-btn:active {
-    transform: scale(0.95);
-  }
-  .enroll-btn:hover {
-    transform: scale(1.05);
-  }
-  .main-btn {
-    background-color: #007BFF;
-    color: white;
-  }
-  .seat-btn {
-    background-color: #f1f1f1;
-  }
-  .full-btn {
-    background-color: #28a745;
-    color: white;
-  }
-  .highlight {
-    background-color: #fff4e5;
-    color: #c05600;
-    font-weight: bold;
-    padding: 5px;
-    border-radius: 5px;
-    margin: 10px 0;
-  }
-  .coupon-box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    margin: 10px 0;
-    flex-wrap: wrap;
-  }
-  .coupon-code {
-    background: #ffd;
-    padding: 5px 10px;
-    border: 1px dashed #c05600;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-  .seat-note {
-    font-size: 14px;
-    color: #ff6600;
-    margin: 10px 0;
-    font-weight: bold;
-  }
-  .back-button {
-    display: none;
-    margin-top: 10px;
-  }
-</style>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #e0f2fe, #ede9fe);
+    }
+    .course-section {
+      padding: 80px 20px;
+      text-align: center;
+      background: linear-gradient(135deg, #c4b5fd, #a5f3fc);
+    }
+    .course-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .course-card {
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(18px);
+      border-radius: 20px;
+      padding: 40px 30px;
+      max-width: 350px;
+      color: #1f2937;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+      position: relative;
+      border: 2px solid #a5f3fc;
+      transition: all 0.3s ease-in-out;
+    }
+    .course-card:hover {
+      box-shadow: 0 0 20px #3b82f6, 0 0 40px #06b6d4;
+      border-color: #3b82f6;
+      transform: translateY(-5px);
+    }
+    .course-card img {
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+    .enroll-btn {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin: 8px;
+      transition: transform 0.2s;
+    }
+    .enroll-btn:hover {
+      transform: scale(1.05);
+    }
+    .main-btn { background-color: #007BFF; color: white; }
+    .seat-btn { background-color: #f1f1f1; }
+    .full-btn { background-color: #28a745; color: white; }
+    .highlight { background-color: #fff4e5; color: #c05600; font-weight: bold; padding: 6px; border-radius: 6px; margin: 8px 0; }
+    .coupon-box { display: flex; justify-content: center; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .coupon-code { background: #ffd; padding: 6px 12px; border: 1px dashed #c05600; font-weight: bold; cursor: pointer; }
+    .course-details { display: none; margin-top: 20px; }
+    .seats-note { color: #ff6600; font-weight: bold; margin-bottom: 10px; }
+    .message-seat, .message-full { font-size: 14px; font-weight: 600; margin-bottom: 8px; }
+    .message-seat { color: #d97706; }
+    .message-full { color: #047857; }
+    .back-button {
+      margin-top: 10px;
+      display: none;
+    }
+    @media (max-width: 768px) {
+      .course-card { max-width: 100%; }
+    }
+  </style>
 
-<div class="course-section">
-  <h2>🎓 Popular Courses</h2>
-  <div class="course-container" id="course-container"></div>
-</div>
+  <div class="course-section">
+    <h2>🎓 Popular Courses</h2>
+    <div class="course-container" id="course-container"></div>
+  </div>
 
-<script>
-const courses = [
-  { title: "Python Mastery Program", desc: "From Basics to Advanced Projects", img: "Web.jpg", countdownId: "countdown1", btnId: "course1-buttons", fullPaymentUrl: "https://dreamshelix.com/cart/python" },
-  { title: "AI/ML Mastery Program", desc: "AI & ML basics to Deep Learning", img: "Web.jpg", countdownId: "countdown2", btnId: "course2-buttons", fullPaymentUrl: "https://dreamshelix.com/cart/ai" },
-];
+  <script>
+    const courses = [
+      { title: "Python Mastery Program", desc: "From Python Basics to Advanced Projects, Django, Flask, REST API & more", img: "Web.jpg", countdownId: "countdown1", btnId: "course1-buttons", fullPaymentUrl: "https://dreamshelix.com/cart/python" },
+      { title: "AI/ML Mastery Program", desc: "From AI & ML basics to Deep Learning, NLP, and deployment", img: "Web.jpg", countdownId: "countdown2", btnId: "course2-buttons", fullPaymentUrl: "https://dreamshelix.com/cart/ai" },
+      { title: "Data Science Mastery", desc: "Data Analysis, Pandas, NumPy, Visualization, Statistics, ML and Projects", img: "Web.jpg", countdownId: "countdown3", btnId: "course3-buttons", fullPaymentUrl: "https://dreamshelix.com/cart/data" },
+      { title: "Cyber Security & Ethical Hacking", desc: "Learn Footprinting, Network Hacking, Web App Security, Tools & More", img: "Web.jpg", countdownId: "countdown4", btnId: "course4-buttons", fullPaymentUrl: "https://dreamshelix.com/cart/cyber" },
+      { title: "Web Development Mastery", desc: "HTML, CSS, JavaScript, React, Node.js, MongoDB & Full Stack Projects", img: "Web.jpg", countdownId: "countdown5", btnId: "course5-buttons", fullPaymentUrl: "https://dreamshelix.com/cart/web" }
+    ];
 
-const container = document.getElementById("course-container");
+    const container = document.getElementById("course-container");
 
-courses.forEach((course, index) => {
-  const html = `
-    <div class="course-card">
-      <img src="${course.img}" alt="${course.title}" style="width: 100%; border-radius: 8px; margin-bottom: 15px;">
-      <h3>✨ ${course.title}</h3>
-      <p>${course.desc}</p>
-      <div><span style="text-decoration: line-through; color: gray;">₹9,999</span> <span style="color: green; font-weight: bold; margin-left: 10px;">₹5,499</span></div>
-      <p style="font-weight: bold;">🎯 Only <strong>5 seats</strong> left. Enroll now!</p>
-      <div>⏱ Offer ends in: <span id="${course.countdownId}">10:00</span></div>
-      <button onclick="toggleButtons('${course.btnId}')" class="enroll-btn main-btn">🚀 Enroll Now</button>
-      <div id="${course.btnId}" style="display: none;">
-        <p class="highlight">🪙 Book your seat now with just ₹1000 and pay the rest before course starts!</p>
-        <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_Qq9SX8Mijo3u5W" async></script></form>
-        <div class="highlight">💥 Make full payment and get flat ₹500 OFF! Apply coupon code below</div>
-        <div class="coupon-box">
-          <div id="code${index+1}" class="coupon-code" onclick="copyCoupon('code${index+1}')">FULL500</div>
-          <span style="font-size: 14px; color: green;">Click to copy</span>
-        </div>
-        <a href="${course.fullPaymentUrl}" target="_blank">
-          <button class="enroll-btn full-btn">💳 Full Payment (₹5499)</button>
-        </a>
-        <div class="back-button" id="back-${index}">
-          <button onclick="toggleButtons('${course.btnId}')" class="enroll-btn" style="background-color: #ccc;">🔙 Back</button>
-        </div>
-      </div>
-    </div>
-  `;
-  container.innerHTML += html;
-});
+    courses.forEach((course, index) => {
+      const html = `
+        <div class="course-card">
+          <img src="${course.img}" alt="${course.title}">
+          <h3>${course.title}</h3>
+          <p>${course.desc}</p>
+          <div><span style="text-decoration: line-through; color: gray;">₹9,999</span> <span style="color: green; font-weight: bold; margin-left: 10px;">₹5,499</span></div>
+          <p style="font-weight: bold; margin: 10px 0;">🎯 Only <strong>5 seats</strong> left. Enroll now!</p>
+          <div>⏱ Offer ends in: <span id="${course.countdownId}">10:00</span></div>
+          <button onclick="toggleButtons('${course.btnId}', 'back-${index}')" class="enroll-btn main-btn">🚀 Enroll Now</button>
+          <div id="${course.btnId}" class="course-details">
+            <p class="message-seat">📢 Book your seat by paying ₹1000 now. Pay the rest before the course starts!</p>
+            <button class="enroll-btn seat-btn" onclick="showRazorpay()">💺 Book Seat (₹1000)</button>
+            <div class="highlight">OR</div>
+            <p class="message-full">💰 Make full payment and get flat ₹500 OFF!</p>
+            <p style="font-weight: 500; color: #555;">Apply Coupon Code:</p>
+            <div class="coupon-box">
+              <div id="code${index}" class="coupon-code" onclick="copyCoupon('code${index}')">FULL500</div>
+              <span style="font-size: 14px; color: green;">Click to copy</span>
+            </div>
+            <a href="${course.fullPaymentUrl}" target="_blank">
+              <button class="enroll-btn full-btn">💳 Full Payment (₹5,499)</button>
+            </a>
+            <div id="back-${index}" class="back-button">
+              <button class="enroll-btn" onclick="goBackToCourses('${course.btnId}', 'back-${index}')" style="background-color: #ccc;">🔙 Back</button>
+            </div>
+          </div>
+        </div>`;
+      container.innerHTML += html;
+    });
 
-let currentlyOpen = null;
+    function toggleButtons(id, backId) {
+      document.querySelectorAll('.course-details').forEach(e => e.style.display = 'none');
+      document.querySelectorAll('.back-button').forEach(e => e.style.display = 'none');
+      const el = document.getElementById(id);
+      const backBtn = document.getElementById(backId);
+      el.style.display = 'block';
+      backBtn.style.display = 'block';
+    }
 
-function toggleButtons(id) {
-  if (currentlyOpen && currentlyOpen !== id) {
-    document.getElementById(currentlyOpen).style.display = 'none';
-  }
-  const el = document.getElementById(id);
-  const isVisible = el.style.display === 'block';
-  el.style.display = isVisible ? 'none' : 'block';
-  currentlyOpen = isVisible ? null : id;
-}
+    function showRazorpay() {
+      const script = document.createElement('script');
+      script.src = "https://checkout.razorpay.com/v1/payment-button.js";
+      script.setAttribute("data-payment_button_id", "pl_Qq9SX8Mijo3u5W");
+      script.async = true;
+      const form = document.createElement('form');
+      form.appendChild(script);
+      document.body.appendChild(form);
+    }
 
-function copyCoupon(id) {
-  const code = document.getElementById(id).innerText;
-  navigator.clipboard.writeText(code).then(() => {
-    alert("Coupon code copied: " + code);
-  });
-}
+    function copyCoupon(id) {
+      const code = document.getElementById(id).innerText;
+      navigator.clipboard.writeText(code).then(() => {
+        alert("Coupon code copied: " + code);
+      });
+    }
 
-function startCountdown(id, minutes) {
-  let time = minutes * 60;
-  const el = document.getElementById(id);
-  function updateTimer() {
-    const mins = String(Math.floor(time / 60)).padStart(2, '0');
-    const secs = String(time % 60).padStart(2, '0');
-    el.innerText = `${mins}:${secs}`;
-    time--;
-    if (time < 0) time = minutes * 60;
-  }
-  updateTimer();
-  setInterval(updateTimer, 1000);
-}
+    function goBackToCourses(btnId, backId) {
+      document.getElementById(btnId).style.display = 'none';
+      document.getElementById(backId).style.display = 'none';
+    }
 
-courses.forEach(course => {
-  startCountdown(course.countdownId, 10);
-});
-</script>
+    function startCountdown(id, minutes) {
+      let time = minutes * 60;
+      const el = document.getElementById(id);
+      function updateTimer() {
+        const mins = String(Math.floor(time / 60)).padStart(2, '0');
+        const secs = String(time % 60).padStart(2, '0');
+        el.innerText = `${mins}:${secs}`;
+        time--;
+        if (time < 0) time = minutes * 60;
+      }
+      updateTimer();
+      setInterval(updateTimer, 1000);
+    }
 
+    courses.forEach(course => {
+      startCountdown(course.countdownId, 10);
+    });
+  </script>
 
 <!-- Course Brochure Download Section -->
 <div style="background: #e0f7fa; padding: 50px 20px; text-align: center; border-top: 2px solid #bae6fd;">
