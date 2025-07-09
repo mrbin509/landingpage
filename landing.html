@@ -481,6 +481,12 @@
     .back-button {
       margin-top: 10px;
       display: none;
+      text-align: center;
+    }
+    #razorpayContainer {
+      display: none;
+      text-align: center;
+      margin: 40px auto;
     }
     @media (max-width: 768px) {
       .course-card { max-width: 100%; }
@@ -492,11 +498,16 @@
     <div class="course-container" id="course-container"></div>
   </div>
 
-  <!-- Razorpay form -->
-  <form id="razorpayForm" style="display:none;">
-    <script src="https://checkout.razorpay.com/v1/payment-button.js"
-            data-payment_button_id="pl_Qq9SX8Mijo3u5W" async></script>
-  </form>
+  <!-- Razorpay wrapper container -->
+  <div id="razorpayContainer">
+    <form id="razorpayForm">
+      <script src="https://checkout.razorpay.com/v1/payment-button.js"
+              data-payment_button_id="pl_Qq9SX8Mijo3u5W" async></script>
+    </form>
+    <div class="back-button" id="razorpayBack">
+      <button class="enroll-btn" onclick="closeRazorpay()" style="background-color: #ccc;">🔙 Back</button>
+    </div>
+  </div>
 
   <script>
     const courses = [
@@ -521,7 +532,7 @@
           <button onclick="toggleButtons('${course.btnId}', 'back-${index}');" class="enroll-btn main-btn">🚀 Enroll Now</button>
           <div id="${course.btnId}" class="course-details">
             <p class="message-seat">📢 Book your seat by paying ₹1000 now. Pay the rest before the course starts!</p>
-            <button class="enroll-btn seat-btn" onclick="openRazorpay('back-${index}')">💺 Book Seat (₹1000)</button>
+            <button class="enroll-btn seat-btn" onclick="openRazorpay()">💺 Book Seat (₹1000)</button>
             <div class="highlight">OR</div>
             <p class="message-full">💰 Make full payment and get flat ₹500 OFF!</p>
             <p style="font-weight: 500; color: #555;">Apply Coupon Code:</p>
@@ -543,14 +554,23 @@
     function toggleButtons(id, backId) {
       document.querySelectorAll('.course-details').forEach(e => e.style.display = 'none');
       document.querySelectorAll('.back-button').forEach(e => e.style.display = 'none');
+      document.getElementById("razorpayContainer").style.display = 'none';
       document.getElementById(id).style.display = 'block';
       document.getElementById(backId).style.display = 'block';
     }
 
-    function openRazorpay(backId) {
-      document.getElementById("razorpayForm").style.display = "block";
-      document.getElementById(backId).style.display = "block";
-      document.getElementById("razorpayForm").scrollIntoView({ behavior: "smooth" });
+    function openRazorpay() {
+      document.querySelectorAll('.course-details').forEach(e => e.style.display = 'none');
+      document.querySelectorAll('.back-button').forEach(e => e.style.display = 'none');
+      document.getElementById("razorpayContainer").style.display = "block";
+      document.getElementById("razorpayBack").style.display = "block";
+      document.getElementById("razorpayContainer").scrollIntoView({ behavior: "smooth" });
+    }
+
+    function closeRazorpay() {
+      document.getElementById("razorpayContainer").style.display = "none";
+      document.querySelectorAll('.course-details').forEach(e => e.style.display = 'none');
+      document.querySelectorAll('.back-button').forEach(e => e.style.display = 'none');
     }
 
     function copyCoupon(id) {
@@ -563,7 +583,7 @@
     function goBackToCourses(btnId, backId) {
       document.getElementById(btnId).style.display = 'none';
       document.getElementById(backId).style.display = 'none';
-      document.getElementById("razorpayForm").style.display = 'none';
+      document.getElementById("razorpayContainer").style.display = 'none';
     }
 
     function startCountdown(id, minutes) {
