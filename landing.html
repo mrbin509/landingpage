@@ -544,6 +544,11 @@
   <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_Qq9SX8Mijo3u5W" async></script></form>
 </div>
 
+<!-- Back Button (inside payment section) -->
+<div class="back-button" id="paymentBackButton">
+  <button class="enroll-btn" onclick="goBackToCourses()">🔙 Back</button>
+</div>
+
 <script>
   const courses = [
     { title: "Python Mastery Program", desc: "From Python Basics to Advanced Projects, Django, Flask, REST API & more", img: "Web.jpg", countdownId: "countdown1", btnId: "course1-buttons", fullPaymentUrl: "https://dreamshelix.com/cart/python" },
@@ -597,11 +602,11 @@
     window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
   }
 
-  function goBackToCourses(btnId, backId) {
-    document.getElementById(btnId).style.display = "none";
-    document.getElementById(backId).style.display = "none";
-    document.getElementById("payment-section").style.display = "none";
-  }
+  function goBackToCourses() {
+  document.getElementById("payment-section").style.display = "none";
+  document.getElementById("paymentBackButton").style.display = "none";
+  document.querySelector(".course-section").style.display = "flex";
+}
 
   function copyCoupon(id) {
     const code = document.getElementById(id).innerText;
