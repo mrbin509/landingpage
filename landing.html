@@ -492,6 +492,12 @@
     <div class="course-container" id="course-container"></div>
   </div>
 
+  <!-- Razorpay form -->
+  <form id="razorpayForm" style="display:none;">
+    <script src="https://checkout.razorpay.com/v1/payment-button.js"
+            data-payment_button_id="pl_Qq9SX8Mijo3u5W" async></script>
+  </form>
+
   <script>
     const courses = [
       { title: "Python Mastery Program", desc: "From Python Basics to Advanced Projects, Django, Flask, REST API & more", img: "Web.jpg", countdownId: "countdown1", btnId: "course1-buttons", fullPaymentUrl: "https://dreamshelix.com/cart/python" },
@@ -512,10 +518,10 @@
           <div><span style="text-decoration: line-through; color: gray;">₹9,999</span> <span style="color: green; font-weight: bold; margin-left: 10px;">₹5,499</span></div>
           <p style="font-weight: bold; margin: 10px 0;">🎯 Only <strong>5 seats</strong> left. Enroll now!</p>
           <div>⏱ Offer ends in: <span id="${course.countdownId}">10:00</span></div>
-          <button onclick="toggleButtons('${course.btnId}', 'back-${index}')" class="enroll-btn main-btn">🚀 Enroll Now</button>
+          <button onclick="toggleButtons('${course.btnId}', 'back-${index}');" class="enroll-btn main-btn">🚀 Enroll Now</button>
           <div id="${course.btnId}" class="course-details">
             <p class="message-seat">📢 Book your seat by paying ₹1000 now. Pay the rest before the course starts!</p>
-            <button class="enroll-btn seat-btn" onclick="showRazorpay()">💺 Book Seat (₹1000)</button>
+            <button class="enroll-btn seat-btn" onclick="openRazorpay('back-${index}')">💺 Book Seat (₹1000)</button>
             <div class="highlight">OR</div>
             <p class="message-full">💰 Make full payment and get flat ₹500 OFF!</p>
             <p style="font-weight: 500; color: #555;">Apply Coupon Code:</p>
@@ -537,20 +543,14 @@
     function toggleButtons(id, backId) {
       document.querySelectorAll('.course-details').forEach(e => e.style.display = 'none');
       document.querySelectorAll('.back-button').forEach(e => e.style.display = 'none');
-      const el = document.getElementById(id);
-      const backBtn = document.getElementById(backId);
-      el.style.display = 'block';
-      backBtn.style.display = 'block';
+      document.getElementById(id).style.display = 'block';
+      document.getElementById(backId).style.display = 'block';
     }
 
-    function showRazorpay() {
-      const script = document.createElement('script');
-      script.src = "https://checkout.razorpay.com/v1/payment-button.js";
-      script.setAttribute("data-payment_button_id", "pl_Qq9SX8Mijo3u5W");
-      script.async = true;
-      const form = document.createElement('form');
-      form.appendChild(script);
-      document.body.appendChild(form);
+    function openRazorpay(backId) {
+      document.getElementById("razorpayForm").style.display = "block";
+      document.getElementById(backId).style.display = "block";
+      document.getElementById("razorpayForm").scrollIntoView({ behavior: "smooth" });
     }
 
     function copyCoupon(id) {
@@ -563,6 +563,7 @@
     function goBackToCourses(btnId, backId) {
       document.getElementById(btnId).style.display = 'none';
       document.getElementById(backId).style.display = 'none';
+      document.getElementById("razorpayForm").style.display = 'none';
     }
 
     function startCountdown(id, minutes) {
@@ -583,6 +584,7 @@
       startCountdown(course.countdownId, 10);
     });
   </script>
+
 
 <!-- Course Brochure Download Section -->
 <div style="background: #e0f7fa; padding: 50px 20px; text-align: center; border-top: 2px solid #bae6fd;">
